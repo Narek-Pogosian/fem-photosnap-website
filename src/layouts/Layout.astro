@@ -1,0 +1,85 @@
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import "../styles/globals.css";
+
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+    <!-- Every page should have .page class in top div -->
+    <slot />
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  *,
+  *::after,
+  *::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+    overflow-x: hidden;
+  }
+
+  p {
+    line-height: 1.5rem;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  a {
+    text-decoration: none;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  button,
+  input {
+    font-family: inherit;
+  }
+  .page {
+    flex: 1;
+  }
+
+  .container {
+    padding-inline: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      max-width: 1100px;
+      width: 90%;
+      margin-inline: auto;
+    }
+  }
+</style>

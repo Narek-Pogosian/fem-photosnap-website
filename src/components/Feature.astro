@@ -1,0 +1,33 @@
+---
+export interface Props {
+  title: string;
+  image: string;
+  description: string;
+}
+
+const { title, image, description } = Astro.props;
+---
+
+<div>
+  <img src={image} alt={title} />
+  <h3>{title}</h3>
+  <p>{description}</p>
+</div>
+
+<style>
+  div {
+    max-width: 350px;
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  img {
+    height: 50px;
+    margin-bottom: 2rem;
+  }
+
+  p {
+    color: rgb(97, 97, 97);
+    margin-top: 1rem;
+  }
+</style>

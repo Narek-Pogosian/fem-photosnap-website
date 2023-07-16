@@ -1,0 +1,93 @@
+---
+import { getCollection } from "astro:content";
+import StorySection from "../components/StorySection.astro";
+import Layout from "../layouts/Layout.astro";
+import Feature from "../components/Feature.astro";
+import BetaBanner from "../components/BetaBanner.astro";
+
+const features = await getCollection("features");
+
+export const prerender = true;
+---
+
+<Layout title="Features">
+  <div class="page">
+    <StorySection dark>
+      <div slot="text" class="text">
+        <h1>Features</h1>
+        <p>
+          We make sure all of our features are designed to be loved by every
+          aspiring and even professional photograpers who wanted to share their
+          stories.
+        </p>
+      </div>
+
+      <div slot="image" class="image features-hero-image"></div>
+    </StorySection>
+
+    <div class="features-grid container">
+      {
+        features.map((feature) => (
+          <Feature
+            description={feature.data.description}
+            image={feature.data.image}
+            title={feature.data.title}
+          />
+        ))
+      }
+    </div>
+  </div>
+
+  <BetaBanner />
+</Layout>
+
+<style>
+  .text {
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    left: 1px;
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    color: var(--clr-gray);
+  }
+
+  .features-hero-image {
+    background-image: url("/assets/features/mobile/hero.jpg");
+    height: 100%;
+    background-size: cover;
+  }
+
+  .features-grid {
+    padding-block: 3rem;
+    display: grid;
+    gap: 3rem;
+    place-content: center;
+  }
+
+  @media (min-width: 580px) {
+    .text {
+      padding: 3rem 5rem;
+    }
+    .features-hero-image {
+      background-image: url("/assets/features/tablet/hero.jpg");
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .features-hero-image {
+      background-image: url("/assets/features/desktop/hero.jpg");
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+      padding-block: 6rem;
+      row-gap: 5rem;
+    }
+  }
+</style>

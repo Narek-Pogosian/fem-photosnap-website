@@ -1,0 +1,209 @@
+<div class="container">
+  <div class="toggle-container">
+    <b>Monthly</b>
+    <label class="switch">
+      <input type="checkbox" id="toggle" />
+      <span class="slider round"></span>
+    </label>
+    <b>Yearly</b>
+  </div>
+  <div class="price-plans">
+    <div class="plan">
+      <h3>Basic</h3>
+      <p>
+        Includes basic usage of our platform. Recommended for new and aspiring
+        photographers.
+      </p>
+      <div class="monthly-price">
+        <span class="price">&dollar;19.00</span>
+        <br />
+        <span>per month</span>
+      </div>
+      <div class="yearly-price">
+        <span class="price">&dollar;190.00</span>
+        <br />
+        <span>per year</span>
+      </div>
+      <div class="btn">Pick Plan</div>
+    </div>
+    <div class="plan pro">
+      <h3>Pro</h3>
+      <p>
+        More advanced features available. Recommended for photography veterans
+        and professionals.
+      </p>
+      <div class="monthly-price">
+        <span class="price">&dollar;39.00</span>
+        <br />
+        <span>per month</span>
+      </div>
+      <div class="yearly-price">
+        <span class="price">&dollar;390.00</span>
+        <br />
+        <span>per year</span>
+      </div>
+      <div class="btn btn-pro">Pick Plan</div>
+    </div>
+    <div class="plan">
+      <h3>Business</h3>
+      <p>
+        Additional features available such as more detailed metrics. Recommended
+        for business owners.
+      </p>
+      <div class="monthly-price">
+        <span class="price">&dollar;99.00</span>
+        <br />
+        <span>per month</span>
+      </div>
+      <div class="yearly-price">
+        <span class="price">&dollar;990.00</span>
+        <br />
+        <span>per year</span>
+      </div>
+      <div class="btn">Pick Plan</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const toggle = document.querySelector("#toggle") as HTMLInputElement;
+
+  toggle.addEventListener("change", () => {
+    document.querySelector(".price-plans")?.classList.toggle("yearly");
+  });
+</script>
+
+<style>
+  .price-plans {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    .price-plans {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .plan.pro {
+      height: 430px !important;
+      padding-block: 4rem;
+    }
+  }
+
+  .price-plans .yearly-price {
+    display: none;
+  }
+
+  .price-plans.yearly .monthly-price {
+    display: none;
+  }
+  .price-plans.yearly .yearly-price {
+    display: block;
+  }
+
+  .plan {
+    padding: 2rem;
+    text-align: center;
+    background-color: rgb(237, 237, 237);
+  }
+
+  .plan.pro {
+    background-color: black;
+    color: white;
+    height: 120%;
+  }
+
+  .plan.pro p {
+    color: #ccc;
+  }
+
+  .plane.pro .btn {
+    background-color: #ccc !important;
+  }
+
+  .plan h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .plan p {
+    color: rgb(102, 102, 102);
+    margin-bottom: 2rem;
+  }
+
+  .plan .btn {
+    margin-inline: auto;
+    margin-top: 2.5rem;
+  }
+
+  .plan .price {
+    font-size: 2.5rem;
+  }
+
+  .container {
+    padding-block: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .toggle-container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 55px;
+    height: 32px;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 3px;
+    background-color: rgb(0, 0, 0);
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+  }
+
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+</style>

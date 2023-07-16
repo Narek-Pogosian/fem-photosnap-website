@@ -1,0 +1,106 @@
+<header class="container">
+  <a href="/">
+    <img src="/assets/shared/desktop/logo.svg" alt="logo" />
+  </a>
+  <nav id="primary-navigation">
+    <a href="/stories" class="link">Stories</a>
+    <a href="/features" class="link">Features</a>
+    <a href="/pricing" class="link">Pricing</a>
+    <a href="/invite" class="invite-link btn">Get an invite</a>
+  </nav>
+  <a href="/invite" class="invite-link btn">Get an invite</a>
+  <button
+    class="toggle-menu"
+    aria-controls="primary-navigation"
+    onclick="toggleMenu()"
+  >
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<script is:inline>
+  function toggleMenu() {
+    document.querySelector("#primary-navigation")?.classList.toggle("active");
+    console.log("object");
+  }
+</script>
+
+<style>
+  header {
+    padding-block: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+  }
+
+  a {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  nav {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    align-items: center;
+    top: -50%;
+    transition: all 500ms;
+    left: 0;
+    padding-block: 2rem;
+  }
+
+  nav.active {
+    top: 67px;
+  }
+
+  nav a {
+    color: black;
+    font-size: 14px;
+  }
+
+  header > .invite-link {
+    display: none;
+  }
+
+  button {
+    background-color: transparent;
+    border: 0;
+    height: 17px;
+    width: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  button span {
+    height: 3px;
+    background-color: black;
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .toggle-menu {
+      display: none;
+    }
+
+    nav {
+      position: static;
+      flex-direction: row;
+      width: fit-content;
+      padding-block: 0;
+    }
+
+    nav .invite-link {
+      display: none;
+    }
+
+    header > .invite-link {
+      display: block;
+    }
+  }
+</style>

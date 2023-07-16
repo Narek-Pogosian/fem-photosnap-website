@@ -1,0 +1,145 @@
+---
+import { getCollection } from "astro:content";
+import StorySection from "../components/StorySection.astro";
+import Layout from "../layouts/Layout.astro";
+import Grid from "../components/Grid.astro";
+import Story from "../components/Story.astro";
+
+const stories = await getCollection("stories");
+
+export const prerender = true;
+---
+
+<Layout title="Home">
+  <div class="page">
+    <StorySection dark>
+      <div slot="text" class="text">
+        <h2>CREATE AND SHARE YOUR PHOTO STORIES.</h2>
+        <p>
+          Photosnap is a platform for photographers and visual storytellers. We
+          make it easy to share photos, tell stories and connect with others.
+        </p>
+        <a href="/stories" class="stories-link"
+          ><span>View the stories</span><span>&rarr;</span>
+        </a>
+      </div>
+
+      <div slot="image" class="image create-and-share"></div>
+    </StorySection>
+    <StorySection reverse>
+      <div slot="text" class="text">
+        <h2>BEAUTIFUL STORIES EVERYTIME</h2>
+        <p>
+          We provide design templates to ensure your stories look terrific.
+          Easily add photos, text, embed maps and media from other networks.
+          Then share your story with everyone.
+        </p>
+        <a href="/stories" class="stories-link"
+          ><span>View the stories</span><span>&rarr;</span>
+        </a>
+      </div>
+
+      <div slot="image" class="image beutiful-stories"></div>
+    </StorySection>
+    <StorySection>
+      <div slot="text" class="text">
+        <h2>DESIGNED FOR EVERYONE</h2>
+        <p>
+          Photosnap can help you create stories that resonate with your
+          audience. Our tool is designed for photographers of all levels,
+          brands, businesses you name it.
+        </p>
+        <a href="/stories" class="stories-link"
+          ><span>View the stories</span><span>&rarr;</span>
+        </a>
+      </div>
+
+      <div slot="image" class="image design"></div>
+    </StorySection>
+
+    <Grid>
+      {
+        stories
+          .slice(0, 4)
+          .map((story) => (
+            <Story
+              image={story.data.image}
+              title={story.data.title}
+              author={story.data.author}
+              date={story.data.date}
+            />
+          ))
+      }
+    </Grid>
+  </div>
+</Layout>
+
+<style>
+  .image {
+    height: 100%;
+    background-size: cover;
+  }
+
+  .text {
+    padding-inline: 2rem;
+  }
+
+  .text h2 {
+    margin-bottom: 2rem;
+  }
+
+  .text p {
+    text-wrap: balance;
+    color: gray;
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 580px) {
+    .text h2 {
+      font-size: 2.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .text {
+      padding-inline: 4rem;
+    }
+  }
+
+  /* Images */
+  .create-and-share {
+    background-image: url("/assets/home/mobile/create-and-share.jpg");
+  }
+
+  .beutiful-stories {
+    background-image: url("/assets/home/mobile/beautiful-stories.jpg");
+  }
+
+  .design {
+    background-image: url("/assets/home/mobile/designed-for-everyone.jpg");
+  }
+
+  @media (min-width: 580px) {
+    .create-and-share {
+      background-image: url("/assets/home/tablet/create-and-share.jpg");
+    }
+    .beutiful-stories {
+      background-image: url("/assets/home/tablet/beautiful-stories.jpg");
+    }
+    .design {
+      background-image: url("/assets/home/tablet/designed-for-everyone.jpg");
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .create-and-share {
+      background-image: url("/assets/home/desktop/create-and-share.jpg");
+    }
+    .beutiful-stories {
+      background-image: url("/assets/home/desktop/beautiful-stories.jpg");
+    }
+    .design {
+      background-image: url("/assets/home/desktop/designed-for-everyone.jpg");
+    }
+  }
+</style>

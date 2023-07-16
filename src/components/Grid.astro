@@ -1,0 +1,22 @@
+<ul class="grid">
+  <slot />
+</ul>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 580px) {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .grid {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
+</style>

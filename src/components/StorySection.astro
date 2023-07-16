@@ -1,0 +1,75 @@
+---
+export interface Props {
+  reverse?: boolean;
+  dark?: boolean;
+}
+const { reverse, dark } = Astro.props;
+---
+
+<section class={reverse ? "reverse" : ""}>
+  <div class={dark ? "dark info" : "info"}>
+    <slot name="text" />
+  </div>
+  <div class="image">
+    <!-- Make sure to add height: 100% to div element passed in -->
+    <slot name="image" />
+  </div>
+</section>
+
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .info.dark {
+    background-color: black;
+    color: white;
+  }
+
+  .info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .info,
+  .image {
+    height: 350px;
+  }
+
+  @media (min-width: 580px) {
+    section {
+      flex-direction: row;
+    }
+
+    section.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .info,
+    .image {
+      height: 590px;
+    }
+
+    .info {
+      flex: 3;
+    }
+
+    .image {
+      flex: 2;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .info {
+      flex: 3;
+    }
+
+    .image {
+      flex: 4;
+    }
+  }
+</style>
