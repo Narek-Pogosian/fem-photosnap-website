@@ -1,0 +1,29 @@
+---
+interface Props {
+  href: string;
+  white?: boolean;
+}
+
+const { href, white } = Astro.props;
+---
+
+<a href={href} class={white ? "white" : ""}><slot /></a>
+
+<style lang="scss">
+  @use "@sass/abstracts" as *;
+
+  a {
+    color: $black;
+    transition: color 500ms;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    &.white {
+      color: $white;
+    }
+
+    &:hover {
+      color: $neutral-200;
+    }
+  }
+</style>

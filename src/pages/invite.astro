@@ -17,13 +17,23 @@ import Layout from "../layouts/Layout.astro";
   </div>
 </Layout>
 
-<style>
+<style lang="scss">
+  @use "@sass/abstracts" as *;
+
   .page {
     background-image: url("/assets/shared/mobile/bg-beta.jpg");
     background-repeat: no-repeat;
     background-size: contain;
     padding-block: 4rem;
     background-color: black;
+
+    @include sm {
+      background-image: url("/assets/shared/tablet/bg-beta.jpg");
+    }
+
+    @include lg {
+      background-image: url("/assets/shared/desktop/bg-beta.jpg");
+    }
   }
 
   h1 {
@@ -44,6 +54,10 @@ import Layout from "../layouts/Layout.astro";
     margin-inline: auto;
     display: grid;
     gap: 1.5rem;
+
+    @include sm {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   input {
@@ -54,22 +68,23 @@ import Layout from "../layouts/Layout.astro";
     outline: none;
     font-size: 1rem;
     transition: all 300ms;
-  }
 
-  input::placeholder {
-    color: #1a1919;
-    transition: color 300ms;
-  }
+    &::placeholder {
+      transition: color 300ms;
+      color: #1a1919;
+    }
 
-  input:focus {
-    border-color: #e9e9e9;
-  }
+    &:focus {
+      border-color: $neutral-200;
+    }
 
-  input:focus::placeholder {
-    color: #e9e9e9;
+    &:focus::placeholder {
+      color: $neutral-200;
+    }
   }
 
   .btn {
+    @include btn;
     width: 100%;
     margin-top: 1rem;
     text-transform: uppercase;
@@ -77,26 +92,12 @@ import Layout from "../layouts/Layout.astro";
   }
 
   @media (min-width: 580px) {
-    .page {
-      background-image: url("/assets/shared/tablet/bg-beta.jpg");
-    }
-
-    form {
-      grid-template-columns: 1fr 1fr;
-    }
-
     .col-2 {
       grid-column: 1/3;
     }
 
     .btn {
       grid-column: 1/3;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .page {
-      background-image: url("/assets/shared/desktop/bg-beta.jpg");
     }
   }
 </style>

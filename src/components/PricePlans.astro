@@ -7,6 +7,7 @@
     </label>
     <b>Yearly</b>
   </div>
+
   <div class="price-plans">
     <div class="plan">
       <h3>Basic</h3>
@@ -26,6 +27,7 @@
       </div>
       <div class="btn">Pick Plan</div>
     </div>
+
     <div class="plan pro">
       <h3>Pro</h3>
       <p>
@@ -42,8 +44,9 @@
         <br />
         <span>per year</span>
       </div>
-      <div class="btn btn-pro">Pick Plan</div>
+      <div class="btn-pro">Pick Plan</div>
     </div>
+
     <div class="plan">
       <h3>Business</h3>
       <p>
@@ -73,22 +76,16 @@
   });
 </script>
 
-<style>
+<style lang="scss">
+  @use "@sass/abstracts" as *;
   .price-plans {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-  }
 
-  @media (min-width: 1024px) {
-    .price-plans {
+    @include lg {
       flex-direction: row;
       align-items: center;
-    }
-
-    .plan.pro {
-      height: 430px !important;
-      padding-block: 4rem;
     }
   }
 
@@ -104,42 +101,48 @@
   }
 
   .plan {
-    padding: 2rem;
+    padding: 3rem 2rem;
     text-align: center;
     background-color: rgb(237, 237, 237);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    @include lg {
+      height: 400px;
+
+      &.pro {
+        height: 450px;
+      }
+    }
+
+    &.pro {
+      background-color: $black;
+      color: $white;
+
+      p {
+        color: $neutral-200;
+      }
+    }
+
+    h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .price {
+      font-size: 2.5rem;
+    }
   }
 
-  .plan.pro {
-    background-color: black;
-    color: white;
-    height: 120%;
+  .btn {
+    @include btn;
   }
 
-  .plan.pro p {
-    color: #ccc;
-  }
-
-  .plane.pro .btn {
-    background-color: #ccc !important;
-  }
-
-  .plan h3 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-
-  .plan p {
-    color: rgb(102, 102, 102);
-    margin-bottom: 2rem;
-  }
-
-  .plan .btn {
-    margin-inline: auto;
-    margin-top: 2.5rem;
-  }
-
-  .plan .price {
-    font-size: 2.5rem;
+  .btn-pro {
+    margin-top: 1.5rem;
+    @include btn($white, $black);
   }
 
   .container {

@@ -5,16 +5,25 @@
   </div>
 </div>
 
-<style>
+<style lang="scss">
+  @use "@sass/abstracts" as *;
+
   .beta {
     background-image: url("/assets/shared/mobile/bg-beta.jpg");
     background-size: cover;
     background-color: rgb(157, 157, 157);
     background-blend-mode: multiply;
+
+    @include md {
+      background-image: url("/assets/shared/tablet/bg-beta.jpg");
+    }
+    @include lg {
+      background-image: url("/assets/shared/desktop/bg-beta.jpg");
+    }
   }
 
   .beta a {
-    color: white;
+    color: $white;
     font-size: 1.5rem;
   }
 
@@ -24,39 +33,28 @@
 
   .beta .container {
     height: 280px;
-    color: white;
+    color: $white;
     display: flex;
     align-items: center;
     flex-direction: column;
     text-align: center;
     justify-content: center;
     gap: 2rem;
+
+    @include md {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
   }
 
   .beta h2 {
     max-width: 450px;
     font-size: 2rem;
     text-wrap: balance;
-  }
 
-  @media (min-width: 768px) {
-    .beta {
-      background-image: url("/assets/shared/tablet/bg-beta.jpg");
-    }
-
-    .beta .container {
-      flex-direction: row;
-      justify-content: space-between;
-      text-align: left;
-    }
-
-    .beta h2 {
+    @include md {
       font-size: 3rem;
-    }
-  }
-  @media (min-width: 1024px) {
-    .beta {
-      background-image: url("/assets/shared/desktop/bg-beta.jpg");
     }
   }
 </style>

@@ -16,15 +16,29 @@ const { reverse, dark } = Astro.props;
   </div>
 </section>
 
-<style>
+<style lang="scss">
+  @use "@sass/abstracts" as *;
+
   section {
     display: flex;
     flex-direction: column;
+
+    @include sm {
+      flex-direction: row;
+
+      &.reverse {
+        flex-direction: row-reverse;
+      }
+    }
   }
 
-  .info.dark {
-    background-color: black;
-    color: white;
+  .info,
+  .image {
+    height: 350px;
+
+    @include sm {
+      height: 590px;
+    }
   }
 
   .info {
@@ -33,27 +47,14 @@ const { reverse, dark } = Astro.props;
     flex-direction: column;
     align-items: center;
     gap: 3rem;
+
+    &.dark {
+      background-color: $black;
+      color: $white;
+    }
   }
 
-  .info,
-  .image {
-    height: 350px;
-  }
-
-  @media (min-width: 580px) {
-    section {
-      flex-direction: row;
-    }
-
-    section.reverse {
-      flex-direction: row-reverse;
-    }
-
-    .info,
-    .image {
-      height: 590px;
-    }
-
+  @include sm {
     .info {
       flex: 3;
     }
@@ -63,7 +64,7 @@ const { reverse, dark } = Astro.props;
     }
   }
 
-  @media (min-width: 1024px) {
+  @include lg {
     .info {
       flex: 3;
     }

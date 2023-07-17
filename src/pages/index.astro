@@ -4,6 +4,7 @@ import StorySection from "../components/StorySection.astro";
 import Layout from "../layouts/Layout.astro";
 import Grid from "../components/Grid.astro";
 import Story from "../components/Story.astro";
+import StoriesLink from "@components/StoriesLink.astro";
 
 const stories = await getCollection("stories");
 
@@ -19,9 +20,7 @@ export const prerender = true;
           Photosnap is a platform for photographers and visual storytellers. We
           make it easy to share photos, tell stories and connect with others.
         </p>
-        <a href="/stories" class="stories-link"
-          ><span>View the stories</span><span>&rarr;</span>
-        </a>
+        <StoriesLink dark />
       </div>
 
       <div slot="image" class="image create-and-share"></div>
@@ -34,9 +33,7 @@ export const prerender = true;
           Easily add photos, text, embed maps and media from other networks.
           Then share your story with everyone.
         </p>
-        <a href="/stories" class="stories-link"
-          ><span>View the stories</span><span>&rarr;</span>
-        </a>
+        <StoriesLink />
       </div>
 
       <div slot="image" class="image beutiful-stories"></div>
@@ -49,9 +46,7 @@ export const prerender = true;
           audience. Our tool is designed for photographers of all levels,
           brands, businesses you name it.
         </p>
-        <a href="/stories" class="stories-link"
-          ><span>View the stories</span><span>&rarr;</span>
-        </a>
+        <StoriesLink />
       </div>
 
       <div slot="image" class="image design"></div>
@@ -74,7 +69,8 @@ export const prerender = true;
   </div>
 </Layout>
 
-<style>
+<style lang="scss">
+  @use "@sass/abstracts" as *;
   .image {
     height: 100%;
     background-size: cover;
@@ -82,63 +78,59 @@ export const prerender = true;
 
   .text {
     padding-inline: 2rem;
+
+    @include lg {
+      padding-inline: 4rem;
+    }
   }
 
   .text h2 {
     margin-bottom: 2rem;
-  }
 
-  .text p {
-    text-wrap: balance;
-    color: gray;
-    margin-bottom: 2rem;
-  }
-
-  @media (min-width: 580px) {
-    .text h2 {
+    @include sm {
       font-size: 2.5rem;
     }
   }
 
-  @media (min-width: 1024px) {
-    .text {
-      padding-inline: 4rem;
-    }
+  .text p {
+    text-wrap: balance;
+    color: $neutral-400;
+    margin-bottom: 2rem;
   }
 
   /* Images */
   .create-and-share {
     background-image: url("/assets/home/mobile/create-and-share.jpg");
+
+    @include sm {
+      background-image: url("/assets/home/tablet/create-and-share.jpg");
+    }
+
+    @include lg {
+      background-image: url("/assets/home/desktop/create-and-share.jpg");
+    }
   }
 
   .beutiful-stories {
     background-image: url("/assets/home/mobile/beautiful-stories.jpg");
+
+    @include sm {
+      background-image: url("/assets/home/tablet/beautiful-stories.jpg");
+    }
+
+    @include lg {
+      background-image: url("/assets/home/desktop/beautiful-stories.jpg");
+    }
   }
 
   .design {
     background-image: url("/assets/home/mobile/designed-for-everyone.jpg");
-  }
 
-  @media (min-width: 580px) {
-    .create-and-share {
-      background-image: url("/assets/home/tablet/create-and-share.jpg");
-    }
-    .beutiful-stories {
-      background-image: url("/assets/home/tablet/beautiful-stories.jpg");
-    }
-    .design {
+    @include sm {
       background-image: url("/assets/home/tablet/designed-for-everyone.jpg");
     }
-  }
 
-  @media (min-width: 1024px) {
-    .create-and-share {
-      background-image: url("/assets/home/desktop/create-and-share.jpg");
-    }
-    .beutiful-stories {
-      background-image: url("/assets/home/desktop/beautiful-stories.jpg");
-    }
-    .design {
+    @include lg {
       background-image: url("/assets/home/desktop/designed-for-everyone.jpg");
     }
   }

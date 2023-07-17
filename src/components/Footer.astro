@@ -1,11 +1,15 @@
+---
+import NavLink from "./NavLink.astro";
+---
+
 <footer>
   <div class="container">
     <div class="footer-nav">
       <a href="/"><img src="/assets/shared/desktop/logo-white.svg" alt="" /></a>
       <nav>
-        <a href="/stories" class="link">Stories</a>
-        <a href="/features" class="link">Features</a>
-        <a href="/pricing" class="link">Pricing</a>
+        <NavLink href="/stories" white>Stories</NavLink>
+        <NavLink href="/features" white>Features</NavLink>
+        <NavLink href="/pricing" white>Pricing</NavLink>
       </nav>
       <a href="/invite" class="invite-link">Get an invite</a>
     </div>

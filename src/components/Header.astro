@@ -1,14 +1,21 @@
+---
+import NavLink from "./NavLink.astro";
+---
+
 <header class="container">
   <a href="/">
     <img src="/assets/shared/desktop/logo.svg" alt="logo" />
   </a>
   <nav id="primary-navigation">
-    <a href="/stories" class="link">Stories</a>
-    <a href="/features" class="link">Features</a>
-    <a href="/pricing" class="link">Pricing</a>
-    <a href="/invite" class="invite-link btn">Get an invite</a>
+    <NavLink href="/stories">Stories</NavLink>
+    <NavLink href="/features">Features</NavLink>
+    <NavLink href="/pricing">Pricing</NavLink>
+    <!-- <NavLink href="/stories">Stories</NavLink> -->
+    <a href="/invite" class="btn">Get an invite</a>
   </nav>
-  <a href="/invite" class="invite-link btn">Get an invite</a>
+
+  <a href="/invite" class="btn">Get an invite</a>
+
   <button
     class="toggle-menu"
     aria-controls="primary-navigation"
@@ -25,18 +32,15 @@
   }
 </script>
 
-<style>
+<style lang="scss">
+  @use "@sass/abstracts" as *;
+
   header {
     padding-block: 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 99;
-  }
-
-  a {
-    text-transform: uppercase;
-    letter-spacing: 1px;
   }
 
   nav {
@@ -56,11 +60,6 @@
 
   nav.active {
     top: 67px;
-  }
-
-  nav a {
-    color: black;
-    font-size: 14px;
   }
 
   header > .invite-link {
@@ -83,6 +82,10 @@
     width: 100%;
   }
 
+  .btn {
+    @include btn;
+  }
+
   @media (min-width: 768px) {
     .toggle-menu {
       display: none;
@@ -95,11 +98,11 @@
       padding-block: 0;
     }
 
-    nav .invite-link {
+    nav .btn {
       display: none;
     }
 
-    header > .invite-link {
+    header > .btn {
       display: block;
     }
   }

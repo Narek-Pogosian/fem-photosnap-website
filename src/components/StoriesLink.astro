@@ -1,0 +1,37 @@
+---
+interface Props {
+  dark?: boolean;
+}
+
+const { dark } = Astro.props;
+---
+
+<a href="/stories" class={dark ? "dark" : ""}
+  ><span>View the stories</span><span>&rarr;</span>
+</a>
+
+<style lang="scss">
+  @use "@sass/abstracts" as *;
+
+  a {
+    color: $black;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: color 300ms;
+
+    &.dark {
+      color: $white;
+    }
+
+    & > span:last-of-type {
+      font-size: 1.5rem;
+    }
+
+    &:hover {
+      color: $neutral-200;
+    }
+  }
+</style>

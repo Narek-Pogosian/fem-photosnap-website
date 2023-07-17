@@ -41,11 +41,22 @@ export const prerender = true;
   </div>
 </Layout>
 
-<style>
+<style lang="scss">
+  @use "@sass/abstracts" as *;
+
   .moon {
     height: 320px;
     background-size: cover;
     background-image: url("/assets/stories/mobile/moon-of-appalacia.jpg");
+
+    @include md {
+      height: 650px;
+      background-image: url("/assets/stories/tablet/moon-of-appalacia.jpg");
+    }
+
+    @include lg {
+      background-image: url("/assets/stories/desktop/moon-of-appalacia.jpg");
+    }
   }
 
   .container {
@@ -57,6 +68,11 @@ export const prerender = true;
   .featured-text {
     color: white;
     text-align: center;
+
+    @include sm {
+      width: 400px;
+      text-align: left;
+    }
   }
 
   .featured-text p:first-of-type {
@@ -69,39 +85,21 @@ export const prerender = true;
     font-size: 1.75rem;
     margin-bottom: 0.5rem;
     text-transform: uppercase;
+
+    @include md {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    @include lg {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
   }
 
   .featured-text p:last-of-type {
     font-size: 14px;
     margin-top: 0.5rem;
-    color: var(--clr-gray);
-  }
-
-  @media (min-width: 580px) {
-    .featured-text {
-      width: 400px;
-      text-align: left;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .moon {
-      height: 650px;
-      background-image: url("/assets/stories/tablet/moon-of-appalacia.jpg");
-    }
-    .featured-text h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .moon {
-      background-image: url("/assets/stories/desktop/moon-of-appalacia.jpg");
-    }
-    .featured-text h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-    }
+    color: $neutral-200;
   }
 </style>

@@ -2,20 +2,17 @@
   <slot />
 </ul>
 
-<style>
+<style lang="scss">
+  @use "@sass/abstracts" as *;
   .grid {
     display: grid;
     grid-template-columns: 1fr;
-  }
 
-  @media (min-width: 580px) {
-    .grid {
+    @include sm {
       grid-template-columns: 1fr 1fr;
     }
-  }
 
-  @media (min-width: 1024px) {
-    .grid {
+    @include lg {
       grid-template-columns: 1fr 1fr 1fr 1fr;
     }
   }

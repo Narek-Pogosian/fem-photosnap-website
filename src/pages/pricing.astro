@@ -26,9 +26,15 @@ import PriceCompare from "../components/PriceCompare.astro";
   </div>
 </Layout>
 
-<style>
+<style lang="scss">
+  @use "@sass/abstracts" as *;
+
   .text {
     padding: 1.5rem;
+
+    @include sm {
+      padding: 3rem 5rem;
+    }
   }
   h1 {
     font-size: 3rem;
@@ -38,27 +44,19 @@ import PriceCompare from "../components/PriceCompare.astro";
   }
 
   p {
-    color: var(--clr-gray);
+    color: $neutral-200;
   }
 
   .pricing-image {
     background-image: url("/assets/pricing/mobile/hero.jpg");
     height: 100%;
     background-size: cover;
-  }
 
-  @media (min-width: 580px) {
-    .text {
-      padding: 3rem 5rem;
-    }
-
-    .pricing-image {
+    @include sm {
       background-image: url("/assets/pricing/tablet/hero.jpg");
     }
-  }
 
-  @media (min-width: 1024px) {
-    .pricing-image {
+    @include lg {
       background-image: url("/assets/pricing/desktop/hero.jpg");
     }
   }
