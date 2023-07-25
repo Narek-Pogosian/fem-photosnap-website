@@ -10,11 +10,10 @@ import NavLink from "./NavLink.astro";
     <NavLink href="/stories">Stories</NavLink>
     <NavLink href="/features">Features</NavLink>
     <NavLink href="/pricing">Pricing</NavLink>
-    <!-- <NavLink href="/stories">Stories</NavLink> -->
     <a href="/invite" class="btn">Get an invite</a>
   </nav>
 
-  <a href="/invite" class="btn">Get an invite</a>
+  <a href="/invite" class="btn desktop-invite">Get an invite</a>
 
   <button
     class="toggle-menu"
@@ -34,6 +33,13 @@ import NavLink from "./NavLink.astro";
 
 <style lang="scss">
   @use "@sass/abstracts" as *;
+
+  .desktop-invite {
+    display: none;
+    @include md {
+      display: block;
+    }
+  }
 
   header {
     padding-block: 1.5rem;
