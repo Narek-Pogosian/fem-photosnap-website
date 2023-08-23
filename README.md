@@ -2,7 +2,7 @@
 
 This is my solution to a Frontend Mentor challenge, <a target="_blank" href="https://www.frontendmentor.io/challenges/photosnap-multipage-website-nMDSrNmNW">Link here</a>
 
-## View
+## View website
 
 <a target="_blank" href="https://incandescent-starlight-72a792.netlify.app/">View here</a>
 
