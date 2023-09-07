@@ -13,6 +13,6 @@ This project was built with Astro for easier routing and to take advantage of co
 ## Note! 
 The contact page is not included in the original design but i created my own anyway.
 All the "stories" are written in markdown which with the help of astros static site generation also have their own page, but these pages are not part of the
-original design and thats why the dont have real content and look boring.
+original design and thats why they dont have real content and look boring.
 
 
