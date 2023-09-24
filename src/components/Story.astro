@@ -1,6 +1,4 @@
 ---
-import createSlug from "../lib/createSlug";
-
 export interface Props {
   image: string;
   title: string;
@@ -8,8 +6,6 @@ export interface Props {
   date: string;
 }
 const { image, title, author, date } = Astro.props;
-
-const slug = createSlug(title);
 ---
 
 <li style={{ backgroundImage: `url("/assets/stories/desktop/${image}")` }}>
@@ -17,7 +13,7 @@ const slug = createSlug(title);
     <p class="date">{date}</p>
     <h3>{title}</h3>
     <p class="athor">by {author}</p>
-    <a href={`/story/${slug}`}>Read Story &rarr;</a>
+    <button>Read Story &rarr;</button>
   </div>
 </li>
 
@@ -29,14 +25,14 @@ const slug = createSlug(title);
     padding: 2rem;
     display: flex;
     align-items: flex-end;
-    transition: transform 500ms;
+    transition: transform 400ms;
     background-color: rgb(142, 142, 142);
     background-blend-mode: multiply;
     color: white;
   }
 
   li:hover {
-    transform: translateY(-20px);
+    transform: translateY(-12px);
   }
 
   div {
@@ -48,7 +44,7 @@ const slug = createSlug(title);
     margin-block: 0.25rem;
   }
 
-  a {
+  button {
     border-top: 1px solid rgb(190, 190, 190);
     margin-top: 1.5rem;
     padding-top: 1.5rem;
@@ -57,7 +53,7 @@ const slug = createSlug(title);
     color: white;
     align-items: center;
   }
-  a:hover {
+  button:hover {
     text-decoration: underline;
   }
 </style>

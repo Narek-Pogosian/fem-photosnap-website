@@ -5,6 +5,7 @@ import NavLink from "./NavLink.astro";
 <header class="container">
   <a href="/">
     <img src="/assets/shared/desktop/logo.svg" alt="logo" />
+    <span class="sr-only">Logo, link to home page</span>
   </a>
   <nav id="primary-navigation">
     <NavLink href="/stories">Stories</NavLink>
@@ -20,15 +21,16 @@ import NavLink from "./NavLink.astro";
     aria-controls="primary-navigation"
     onclick="toggleMenu()"
   >
+    <span class="sr-only">Toggle Navigation</span>
     <span></span><span></span><span></span>
   </button>
 </header>
 
 <script is:inline>
-  function toggleMenu() {
-    document.querySelector("#primary-navigation")?.classList.toggle("active");
-    console.log("object");
-  }
+function toggleMenu() {
+  document.querySelector("#primary-navigation")?.classList.toggle("active");
+  console.log("object");
+}
 </script>
 
 <style lang="scss">
