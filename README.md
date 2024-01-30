@@ -6,6 +6,4 @@ This is my solution to a Frontend Mentor challenge, <a target="_blank" href="htt
 
 This project was built with Astro for easier routing and to take advantage of components, the styling is written mobile first with SCSS.
 
-## View website
 
-<a target="_blank" href="https://incandescent-starlight-72a792.netlify.app/">View here</a>
